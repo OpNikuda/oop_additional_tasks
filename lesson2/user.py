@@ -12,12 +12,42 @@
 Для свойств name и password используйте декораторы @property и @password.setter.
 """
 
-
 class User:
-    pass
+
+    def __init__(self, name, password):
+        self._name = name
+        self._password = password
+        self._is_logged_in = False
+        self._is_admin = False
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, value):
+        self._password = value
+
+    @property
+    def is_admin(self):
+        return self._is_admin
+
+    def login(self, password):
+        if password == self._password:
+            self._is_logged_in = True
+            return True
+        return False
+
+    def logout(self):
+        if self._is_logged_in:
+            self._is_logged_in = False
 
 
-# код для проверки 
+# код для проверки
 user1 = User("Alice", "qwerty")
 print(user1.name)  # Alice
 print(user1.password)  # qwerty
@@ -29,5 +59,5 @@ print(user1.password)  # newpassword
 user1._is_admin = True
 print(user1.is_admin)  # True
 
-user1.login("newpassword")  # True
+print(user1.login("newpassword"))  # True
 user1.logout()

@@ -14,17 +14,20 @@
 
 class Number:
 
-    def __init__(self, value):
-        ...
+    def __init__(self, value: float):
+        self.value = value
 
-    def ...(self):
-        ...
 
-    def ...:
-        ...
+    def get(self):
+        return self.value
 
-    def ...:
-        ...
+    def add(self, num: float):
+        self.value += num
+
+
+    def substract(self, num: float):
+        self.value -= num
+
 
 
 # код для проверки 
