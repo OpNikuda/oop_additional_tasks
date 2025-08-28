@@ -7,12 +7,19 @@
 """
 
 
+import time
+
 class Timer:
-    pass
+    def __enter__(self):
+        self.start_time = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.end_time = time.time()
+        self.elapsed_time = self.end_time - self.start_time
+        print(f'{self.elapsed_time:.6f} seconds')
 
 
 with Timer() as timer:
     # блок кода
-    
-    # код для проверки 
-    print("Execution time:", timer.elapsed_time)
+    time.sleep(1)
